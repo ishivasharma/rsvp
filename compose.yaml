@@ -1,0 +1,15 @@
+services:
+  wedding-site:
+    build: .
+    container_name: wedding-site
+    ports:
+      - "8080:3000"
+    environment:
+      PORT: 3000
+      RSVP_STORE_PATH: /app/data/rsvps.json
+    volumes:
+      - rsvp_data:/app/data
+    restart: unless-stopped
+
+volumes:
+  rsvp_data:
